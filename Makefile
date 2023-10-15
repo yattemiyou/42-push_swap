@@ -7,6 +7,7 @@ INCLUDE = -I. -I./libft
 SRCDIR = ./
 SRCS = main.c
 SRCS += ft_stack.c
+SRCS += ft_util.c
 
 OBJS = $(addprefix $(SRCDIR),$(SRCS:%.c=%.o))
 
