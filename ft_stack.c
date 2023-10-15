@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:23:41 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/15 15:56:55 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/15 23:27:56 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,26 @@ int64_t	ft_stack_find(t_stack *stack, int n)
 
 void	ft_stack_push(t_stack *stack, int n)
 {
-	(void)stack;
-	(void)n;
+	int64_t	*src;
+	int64_t	*dest;
+
+	src = &(stack->buffer[0]);
+	dest = &(stack->buffer[1]);
+	ft_memmove(dest, src, sizeof(int64_t) * stack->len);
+	stack->len += 1;
+	stack->buffer[0] = n;
 }
 
 int64_t	ft_stack_pop(t_stack *stack)
 {
-	return (stack->buffer[0]);
+	int64_t	*src;
+	int64_t	*dest;
+	int64_t	n;
+
+	src = &(stack->buffer[1]);
+	dest = &(stack->buffer[0]);
+	n = stack->buffer[0];
+	stack->len -= 1;
+	ft_memmove(dest, src, sizeof(int64_t) * stack->len);
+	return (n);
 }
