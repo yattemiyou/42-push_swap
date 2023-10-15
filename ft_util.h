@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack.h                                         :+:      :+:    :+:   */
+/*   ft_util.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 11:16:18 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/15 13:44:04 by anonymous        ###   ########.fr       */
+/*   Created: 2023/08/08 21:46:06 by anonymous         #+#    #+#             */
+/*   Updated: 2023/10/15 13:59:58 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STACK_H
-# define FT_STACK_H
+#ifndef FT_UTIL_H
+# define FT_UTIL_H
 
-# include <stdint.h>
-
-typedef struct s_stack
-{
-	char		label;
-	int64_t		*buffer;
-	uint32_t	len;
-	int64_t		min;
-	int64_t		max;
-}	t_stack;
-
-t_stack	ft_stack_initialize(char label, uint32_t capacity);
-void	ft_stack_push(t_stack *stack, int n);
-int64_t	ft_stack_pop(t_stack *stack);
+# define TRUE 1
+# define FALSE 0
 
 #endif
