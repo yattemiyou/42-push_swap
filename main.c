@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:03:26 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/16 06:31:18 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/16 20:50:08 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,22 @@ static int	initialize(t_stack *a, t_stack *b, int argc, char *argv[])
 	return (TRUE);
 }
 
-// #include <stdio.h>
-// void	print_stack(t_stack *stack)
-// {
-// 	uint32_t	i;
+void	print_stack(t_stack *stack)
+{
+	uint32_t	i;
 
-// 	printf("stack_%c\n", stack->label);
-
-// 	i = 0;
-// 	while (i < stack->len)
-// 	{
-// 		printf("%ld ", stack->buffer[i]);
-// 		i++;
-// 	}
-// 	printf("\n");
-// }
+	ft_putstr_fd("stack_", STDOUT_FILENO);
+	ft_putchar_fd(stack->label, STDOUT_FILENO);
+	ft_putendl_fd("", STDOUT_FILENO);
+	i = 0;
+	while (i < stack->len)
+	{
+		ft_putnbr_fd(stack->buffer[i], STDOUT_FILENO);
+		ft_putchar_fd(' ', STDOUT_FILENO);
+		i++;
+	}
+	ft_putendl_fd("", STDOUT_FILENO);
+}
 
 int	main(int argc, char *argv[])
 {
