@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:23:41 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/16 22:03:23 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/17 06:35:30 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ void	ft_stack_insert(t_stack *stack, uint32_t index, int n)
 		stack->max = n;
 }
 
-int64_t	ft_stack_pop(t_stack *stack)
+int64_t	ft_stack_pop(t_stack *stack, uint32_t index)
 {
 	int64_t		*src;
 	int64_t		*dest;
 	int64_t		n;
 	uint32_t	i;
 
-	n = stack->buffer[0];
-	src = &(stack->buffer[1]);
-	dest = &(stack->buffer[0]);
-	ft_memmove(dest, src, (stack->len - 1) * sizeof(int64_t));
+	n = stack->buffer[index];
+	src = &(stack->buffer[index + 1]);
+	dest = &(stack->buffer[index]);
+	ft_memmove(dest, src, (stack->len - index - 1) * sizeof(int64_t));
 	stack->len -= 1;
 	if (n == stack->min || n == stack->max)
 	{
