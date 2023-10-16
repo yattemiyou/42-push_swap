@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:16:18 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/15 15:45:58 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/16 21:19:06 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct s_stack
 
 t_stack	ft_stack_initialize(char label, uint32_t size, int argc, char *argv[]);
 int64_t	ft_stack_find(t_stack *stack, int n);
-void	ft_stack_push(t_stack *stack, int n);
+void	ft_stack_insert(t_stack *stack, uint32_t index, int n);
 int64_t	ft_stack_pop(t_stack *stack);
+void	ft_stack_swap(t_stack *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:03:26 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/16 20:50:08 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/16 22:10:12 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	print_stack(t_stack *stack)
 {
 	uint32_t	i;
 
-	ft_putstr_fd("stack_", STDOUT_FILENO);
+	ft_putstr_fd("---stack_", STDOUT_FILENO);
 	ft_putchar_fd(stack->label, STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
+	ft_putendl_fd("---", STDOUT_FILENO);
 	i = 0;
 	while (i < stack->len)
 	{
@@ -46,6 +46,13 @@ void	print_stack(t_stack *stack)
 		i++;
 	}
 	ft_putendl_fd("", STDOUT_FILENO);
+	ft_putstr_fd("min: ", STDOUT_FILENO);
+	ft_putnbr_fd(stack->min, STDOUT_FILENO);
+	ft_putchar_fd(' ', STDOUT_FILENO);
+	ft_putstr_fd("max: ", STDOUT_FILENO);
+	ft_putnbr_fd(stack->max, STDOUT_FILENO);
+	ft_putendl_fd("", STDOUT_FILENO);
+	ft_putendl_fd("------------", STDOUT_FILENO);
 }
 
 int	main(int argc, char *argv[])
