@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:03:26 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/17 06:33:56 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/17 23:08:45 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,63 +68,6 @@ int	main(int argc, char *argv[])
 		ft_putendl_fd("Error", STDERR_FILENO);
 		return (1);
 	}
-
-	print_stack(&stack_a);
-
-	ft_stack_pop(&stack_a, 0);
-	print_stack(&stack_a);
-
-	ft_stack_swap(&stack_a);
-	print_stack(&stack_a);
-
-	ft_stack_insert(&stack_a, 0, 5);
-	print_stack(&stack_a);
-
-	ft_stack_pop(&stack_a, 0);
-	print_stack(&stack_a);
-
-	ft_stack_insert(&stack_a, 2, -1);
-	print_stack(&stack_a);
-
-	ft_putnbr_fd(ft_stack_is_sorted(&stack_a), STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
-
-	ft_stack_swap(&stack_a);
-	print_stack(&stack_a);
-
-	ft_putnbr_fd(ft_stack_is_sorted(&stack_a), STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
-
-	ft_stack_rotate(&stack_a);
-	print_stack(&stack_a);
-
-	ft_putnbr_fd(ft_stack_is_sorted(&stack_a), STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
-
-	ft_stack_rotate(&stack_a);
-	print_stack(&stack_a);
-
-	ft_putnbr_fd(ft_stack_is_sorted(&stack_a), STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
-
-	ft_stack_rrotate(&stack_a);
-	print_stack(&stack_a);
-
-	ft_putnbr_fd(ft_stack_is_sorted(&stack_a), STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
-
-	ft_stack_rrotate(&stack_a);
-	print_stack(&stack_a);
-
-	ft_putnbr_fd(ft_stack_is_sorted(&stack_a), STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
-
-	ft_stack_rrotate(&stack_a);
-	print_stack(&stack_a);
-
-	ft_putnbr_fd(ft_stack_is_sorted(&stack_a), STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
-
 	free(stack_a.buffer);
 	free(stack_b.buffer);
 	return (0);
