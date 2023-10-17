@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:23:41 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/17 06:35:30 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/17 19:55:55 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,24 @@ int64_t	ft_stack_pop(t_stack *stack, uint32_t index)
 	return (n);
 }
 
-void	ft_stack_swap(t_stack *stack)
+int	ft_stack_is_sorted(t_stack *stack)
 {
-	int64_t	temp;
+	uint32_t	index;
+	uint32_t	i;
+	int64_t		current;
+	int64_t		next;
 
-	temp = stack->buffer[0];
-	stack->buffer[0] = stack->buffer[1];
-	stack->buffer[1] = temp;
+	if (stack->len <= 1)
+		return (TRUE);
+	index = ft_stack_find(stack, stack->min);
+	i = index;
+	while (i < index + stack->len - 1)
+	{
+		current = stack->buffer[i % stack->len];
+		next = stack->buffer[(i + 1) % stack->len];
+		if (current >= next)
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
 }
