@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:03:26 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/17 23:08:45 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/18 06:49:14 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <unistd.h>
 
 #include "ft_operation.h"
+#include "ft_phase1.h"
+#include "ft_phase3.h"
 #include "ft_stack.h"
 #include "ft_util.h"
 #include "libft.h"
@@ -47,13 +49,13 @@ void	print_stack(t_stack *stack)
 		i++;
 	}
 	ft_putendl_fd("", STDOUT_FILENO);
-	ft_putstr_fd("min: ", STDOUT_FILENO);
-	ft_putnbr_fd(stack->min, STDOUT_FILENO);
-	ft_putchar_fd(' ', STDOUT_FILENO);
-	ft_putstr_fd("max: ", STDOUT_FILENO);
-	ft_putnbr_fd(stack->max, STDOUT_FILENO);
-	ft_putendl_fd("", STDOUT_FILENO);
-	ft_putendl_fd("------------", STDOUT_FILENO);
+	// ft_putstr_fd("min: ", STDOUT_FILENO);
+	// ft_putnbr_fd(stack->min, STDOUT_FILENO);
+	// ft_putchar_fd(' ', STDOUT_FILENO);
+	// ft_putstr_fd("max: ", STDOUT_FILENO);
+	// ft_putnbr_fd(stack->max, STDOUT_FILENO);
+	// ft_putendl_fd("", STDOUT_FILENO);
+	// ft_putendl_fd("------------", STDOUT_FILENO);
 }
 
 int	main(int argc, char *argv[])
@@ -68,6 +70,15 @@ int	main(int argc, char *argv[])
 		ft_putendl_fd("Error", STDERR_FILENO);
 		return (1);
 	}
+
+	print_stack(&stack_a);
+
+	ft_phase1(&stack_a, &stack_b);
+	ft_phase3(&stack_a);
+
+	print_stack(&stack_a);
+	print_stack(&stack_b);
+
 	free(stack_a.buffer);
 	free(stack_b.buffer);
 	return (0);
