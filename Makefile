@@ -8,6 +8,7 @@ SRCDIR = ./
 SRCS = main.c
 SRCS += ft_operation.c
 SRCS += ft_phase1.c
+SRCS += ft_phase2.c
 SRCS += ft_phase3.c
 SRCS += ft_stack.c
 SRCS += ft_util.c
