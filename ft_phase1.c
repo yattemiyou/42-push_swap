@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 22:46:55 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/18 06:54:41 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/19 06:43:32 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,47 +44,31 @@ static void	ft_sort(t_stack *stack)
 	}
 }
 
-void	ft_phase1(t_stack *a, t_stack *b)
+void	ft_phase1(t_stack *a, t_stack *b, int64_t ref, int64_t limit)
 {
-	int64_t ref = a->buffer[a->len - 1];
-	int64_t limit = INT64_MAX;
+	int64_t	n[3];
 
-	int64_t prev;
-	int64_t cur;
-	int64_t next;
 	while (!ft_stack_is_sorted(a) && a->len > 3)
 	{
-		prev = a->buffer[a->len - 1];
-		cur = a->buffer[0];
-		next = a->buffer[1];
-		
-		if (b->len > 0 && prev < b->buffer[0] && b->buffer[0] < cur && b->buffer[0] < limit)
+		n[0] = a->buffer[a->len - 1];
+		n[1] = a->buffer[0];
+		n[2] = a->buffer[1];
+		if (b->len > 0 && n[0] < b->buffer[0] && b->buffer[0] < n[1])
 		{
-			ft_stack_push(a, b);
-			continue;
+			if (b->buffer[0] < limit)
+				ft_stack_push(a, b);
 		}
-
-		if (prev < next && next < cur && cur < limit)
-		{
+		else if (n[0] < n[2] && n[2] < n[1] && n[1] < limit)
 			ft_stack_swap(a, TRUE);
-			continue;
-		}
-
-		if (prev < cur && cur < limit)
-		{
+		else if (n[0] < n[1] && n[1] < limit)
 			ft_stack_rotate(a, TRUE);
-			continue;
-		}
-
-		if (prev == a->max && cur == a->min)
+		else if (n[0] == a->max && n[1] == a->min)
 		{
 			limit = ref;
 			ft_stack_rotate(a, TRUE);
-			continue;
 		}
-
-		ft_stack_push(b, a);
+		else
+			ft_stack_push(b, a);
 	}
-	
 	ft_sort(a);
 }
