@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 22:46:55 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/17 22:53:01 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/18 20:01:37 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_phase3(t_stack *stack)
 
 	index = ft_stack_find(stack, stack->min);
 	ft_bzero(&operation, sizeof(operation));
-	if (index <= stack->label / 2)
+	if (index <= stack->len / 2)
 		operation.ra = index;
 	else
 		operation.rra = stack->len - index;
