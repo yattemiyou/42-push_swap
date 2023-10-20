@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 22:46:55 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/19 06:43:32 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/20 21:06:54 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,16 @@ static void	ft_sort(t_stack *stack)
 
 void	ft_phase1(t_stack *a, t_stack *b, int64_t ref, int64_t limit)
 {
-	int64_t	n[3];
+	int64_t	n[4];
 
 	while (!ft_stack_is_sorted(a) && a->len > 3)
 	{
 		n[0] = a->buffer[a->len - 1];
 		n[1] = a->buffer[0];
 		n[2] = a->buffer[1];
-		if (b->len > 0 && n[0] < b->buffer[0] && b->buffer[0] < n[1])
-		{
-			if (b->buffer[0] < limit)
-				ft_stack_push(a, b);
-		}
+		n[3] = b->buffer[0];
+		if (b->len > 0 && n[0] < n[3] && n[3] < n[1] && n[3] < limit)
+			ft_stack_push(a, b);
 		else if (n[0] < n[2] && n[2] < n[1] && n[1] < limit)
 			ft_stack_swap(a, TRUE);
 		else if (n[0] < n[1] && n[1] < limit)
