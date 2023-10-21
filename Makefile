@@ -7,6 +7,7 @@ INCLUDE = -I. -I./libft
 SRCDIR = ./
 SRCS = main.c
 SRCS += ft_operation.c
+SRCS += ft_optimizer.c
 SRCS += ft_phase1.c
 SRCS += ft_phase2.c
 SRCS += ft_phase3.c

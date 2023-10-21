@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:25:07 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/17 22:17:46 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/21 10:21:05 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_operation
 	int	rra;
 	int	rrb;
 	int	rrr;
+	int	cost;
 }	t_operation;
 
 void	ft_stack_batch(t_stack *a, t_stack *b, t_operation operation);

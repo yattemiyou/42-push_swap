@@ -6,11 +6,15 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 22:46:55 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/18 20:16:13 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/10/21 10:55:17 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_phase2.h"
+
+#include "ft_operation.h"
+#include "ft_optimizer.h"
+#include "libft.h"
 
 static uint32_t	get_insertable_index(t_stack *stack, int n)
 {
@@ -26,9 +30,45 @@ static uint32_t	get_insertable_index(t_stack *stack, int n)
 	return (i);
 }
 
+static t_operation	get_operation(t_stack *a, t_stack *b, uint32_t index_b)
+{
+	t_operation	o;
+	uint32_t	index_a;
+
+	ft_bzero(&o, sizeof(o));
+	index_a = get_insertable_index(a, b->buffer[index_b]);
+	if (index_a != 0)
+	{
+		o.ra = index_a;
+		o.rra = a->len - index_a;
+	}
+	if (index_b != 0)
+	{
+		o.rb = index_b;
+		o.rrb = b->len - index_b;
+	}
+	return (o);
+}
 
 void	ft_phase2(t_stack *a, t_stack *b)
 {
-	(void)a;
-	(void)b;
+	t_operation	min;
+	uint32_t	index_b;
+	t_operation	o;
+
+	while (b->len > 0)
+	{
+		min.cost = INT32_MAX;
+		index_b = 0;
+		while (index_b < b->len)
+		{
+			o = get_operation(a, b, index_b);
+			o = ft_optimize_operation(&o);
+			if (min.cost > o.cost)
+				min = o;
+			index_b++;
+		}
+		ft_stack_batch(a, b, min);
+		ft_stack_push(a, b);
+	}
 }
