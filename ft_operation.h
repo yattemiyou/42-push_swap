@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:25:07 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/21 10:21:05 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/18 19:27:13 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_operation
 }	t_operation;
 
 void	ft_stack_batch(t_stack *a, t_stack *b, t_operation operation);
-void	ft_stack_push(t_stack *dest, t_stack *src);
+void	ft_stack_push(t_stack *dest, t_stack *src, int display);
 void	ft_stack_rotate(t_stack *stack, int display);
 void	ft_stack_rrotate(t_stack *stack, int display);
 void	ft_stack_swap(t_stack *stack, int display);

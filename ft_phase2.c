@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 22:46:55 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/21 10:55:17 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/18 19:28:54 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	ft_phase2(t_stack *a, t_stack *b)
 			index_b++;
 		}
 		ft_stack_batch(a, b, min);
-		ft_stack_push(a, b);
+		ft_stack_push(a, b, TRUE);
 	}
 }

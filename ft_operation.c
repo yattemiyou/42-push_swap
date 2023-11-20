@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:27:59 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/17 22:32:19 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/18 19:40:32 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ void	ft_stack_batch(t_stack *a, t_stack *b, t_operation operation)
 	}
 }
 
-void	ft_stack_push(t_stack *dest, t_stack *src)
+void	ft_stack_push(t_stack *dest, t_stack *src, int display)
 {
-	print_operation("p", dest->label);
+	if (src->len == 0)
+		return ;
+	print_operation("p", dest->label * display);
 	ft_stack_insert(dest, 0, ft_stack_pop(src, 0));
 }
 
@@ -50,6 +52,8 @@ void	ft_stack_rotate(t_stack *stack, int display)
 {
 	int64_t	n;
 
+	if (stack->len <= 1)
+		return ;
 	print_operation("r", stack->label * display);
 	n = ft_stack_pop(stack, 0);
 	ft_stack_insert(stack, stack->len, n);
@@ -59,6 +63,8 @@ void	ft_stack_rrotate(t_stack *stack, int display)
 {
 	int64_t	n;
 
+	if (stack->len <= 1)
+		return ;
 	print_operation("rr", stack->label * display);
 	n = ft_stack_pop(stack, stack->len - 1);
 	ft_stack_insert(stack, 0, n);
@@ -68,6 +74,8 @@ void	ft_stack_swap(t_stack *stack, int display)
 {
 	int64_t	temp;
 
+	if (stack->len <= 1)
+		return ;
 	print_operation("s", stack->label * display);
 	temp = stack->buffer[0];
 	stack->buffer[0] = stack->buffer[1];

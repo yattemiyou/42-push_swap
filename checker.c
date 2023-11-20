@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:03:26 by anonymous         #+#    #+#             */
-/*   Updated: 2023/11/18 19:19:42 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/18 19:29:12 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ static void	push_swap(char *operation, t_stack *stack_a, t_stack *stack_b)
 		ft_stack_swap(stack_b, FALSE);
 	}
 	else if (ft_strncmp(operation, "pa", len) == 0)
-		ft_stack_push(stack_a, stack_b);
+		ft_stack_push(stack_a, stack_b, FALSE);
 	else if (ft_strncmp(operation, "pb", len) == 0)
-		ft_stack_push(stack_b, stack_a);
+		ft_stack_push(stack_b, stack_a, FALSE);
 }
 
 static void	rotate(char *operation, t_stack *stack_a, t_stack *stack_b)

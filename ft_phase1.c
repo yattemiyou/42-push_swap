@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 22:46:55 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/20 21:06:54 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/18 19:28:39 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_phase1(t_stack *a, t_stack *b, int64_t ref, int64_t limit)
 		n[2] = a->buffer[1];
 		n[3] = b->buffer[0];
 		if (b->len > 0 && n[0] < n[3] && n[3] < n[1] && n[3] < limit)
-			ft_stack_push(a, b);
+			ft_stack_push(a, b, TRUE);
 		else if (n[0] < n[2] && n[2] < n[1] && n[1] < limit)
 			ft_stack_swap(a, TRUE);
 		else if (n[0] < n[1] && n[1] < limit)
@@ -66,7 +66,7 @@ void	ft_phase1(t_stack *a, t_stack *b, int64_t ref, int64_t limit)
 			ft_stack_rotate(a, TRUE);
 		}
 		else
-			ft_stack_push(b, a);
+			ft_stack_push(b, a, TRUE);
 	}
 	ft_sort(a);
 }
