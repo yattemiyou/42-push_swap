@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:03:26 by anonymous         #+#    #+#             */
-/*   Updated: 2023/11/18 19:29:12 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/20 23:54:58 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	initialize(t_stack *a, t_stack *b, int argc, char *argv[])
 	return (TRUE);
 }
 
-static void	push_swap(char *operation, t_stack *stack_a, t_stack *stack_b)
+static int	push_swap(char *operation, t_stack *stack_a, t_stack *stack_b)
 {
 	size_t	len;
 
@@ -49,9 +49,12 @@ static void	push_swap(char *operation, t_stack *stack_a, t_stack *stack_b)
 		ft_stack_push(stack_a, stack_b, FALSE);
 	else if (ft_strncmp(operation, "pb", len) == 0)
 		ft_stack_push(stack_b, stack_a, FALSE);
+	else
+		return (FALSE);
+	return (TRUE);
 }
 
-static void	rotate(char *operation, t_stack *stack_a, t_stack *stack_b)
+static int	rotate(char *operation, t_stack *stack_a, t_stack *stack_b)
 {
 	size_t	len;
 
@@ -74,26 +77,25 @@ static void	rotate(char *operation, t_stack *stack_a, t_stack *stack_b)
 		ft_stack_rrotate(stack_a, FALSE);
 		ft_stack_rrotate(stack_b, FALSE);
 	}
+	else
+		return (FALSE);
+	return (TRUE);
 }
 
 static int	run(t_stack *stack_a, t_stack *stack_b)
 {
 	char	*operation;
+	int		ret;
 
 	operation = get_next_line(STDIN_FILENO);
 	while (operation != NULL)
 	{
 		operation[ft_strlen(operation) - 1] = '\0';
-		if (operation[0] == 'p' || operation[0] == 's')
-			push_swap(operation, stack_a, stack_b);
-		else if (operation[0] == 'r')
-			rotate(operation, stack_a, stack_b);
-		else
-		{
-			free(operation);
-			return (FALSE);
-		}
+		ret = push_swap(operation, stack_a, stack_b);
+		ret |= rotate(operation, stack_a, stack_b);
 		free(operation);
+		if (ret == FALSE)
+			return (FALSE);
 		operation = get_next_line(STDIN_FILENO);
 	}
 	return (TRUE);
