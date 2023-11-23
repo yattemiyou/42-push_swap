@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:03:26 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/21 11:03:32 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/23 12:45:21 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,9 @@ int	main(int argc, char *argv[])
 	free(stack_b.buffer);
 	return (0);
 }
+
+// #include <libc.h>
+// __attribute__((destructor))
+// static void destructor() {
+// 	system("leaks -q push_swap");
+// }
