@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 22:46:55 by anonymous         #+#    #+#             */
-/*   Updated: 2023/11/18 19:28:39 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/25 18:17:37 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,30 @@
 
 #include "ft_operation.h"
 #include "ft_util.h"
+
+static int64_t	get_pivot(t_stack *a)
+{
+	uint32_t	i;
+	uint32_t	j;
+	uint32_t	count;
+
+	i = 0;
+	while (i < a->len)
+	{
+		j = 0;
+		count = 0;
+		while (j < a->len)
+		{
+			if (a->buffer[i] >= a->buffer[j])
+				count++;
+			j++;
+		}
+		if (count == (uint32_t)(a->len / 2))
+			break ;
+		i++;
+	}
+	return (a->buffer[i]);
+}
 
 static void	ft_sort(t_stack *stack)
 {
@@ -44,10 +68,19 @@ static void	ft_sort(t_stack *stack)
 	}
 }
 
+static void	push_b(t_stack *a, t_stack *b, int64_t n, int64_t pivot)
+{
+	ft_stack_push(b, a, TRUE);
+	if (n <= pivot)
+		ft_stack_rotate(b, TRUE);
+}
+
 void	ft_phase1(t_stack *a, t_stack *b, int64_t ref, int64_t limit)
 {
 	int64_t	n[4];
+	int64_t	pivot;
 
+	pivot = get_pivot(a);
 	while (!ft_stack_is_sorted(a) && a->len > 3)
 	{
 		n[0] = a->buffer[a->len - 1];
@@ -66,7 +99,7 @@ void	ft_phase1(t_stack *a, t_stack *b, int64_t ref, int64_t limit)
 			ft_stack_rotate(a, TRUE);
 		}
 		else
-			ft_stack_push(b, a, TRUE);
+			push_b(a, b, n[1], pivot);
 	}
 	ft_sort(a);
 }
