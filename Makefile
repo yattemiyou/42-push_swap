@@ -23,13 +23,15 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g
 
-all: $(NAME) bonus
+all: $(NAME)
+
+bonus: $(CHECKER)
 
 $(NAME): $(OBJS) main.o
 	$(MAKE) -C ./libft
 	$(CC) $^ $(LIBS) -o $@
 
-bonus: $(OBJS) checker.o
+$(CHECKER): $(OBJS) checker.o
 	$(MAKE) -C ./libft
 	$(CC) $^ $(LIBS) -o $(CHECKER)
 
