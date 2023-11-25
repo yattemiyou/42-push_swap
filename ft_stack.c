@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42tokyo.jp    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:23:41 by anonymous         #+#    #+#             */
-/*   Updated: 2023/10/17 19:55:55 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/11/25 17:18:11 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int64_t	ft_stack_pop(t_stack *stack, uint32_t index)
 			if (stack->buffer[i] > stack->max)
 				stack->max = stack->buffer[i];
 			i++;
-		}		
+		}
 	}
 	return (n);
 }
